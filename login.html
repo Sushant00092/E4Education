@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Favicon and Page Title -->
+    <link rel="shortcut icon" type="image/png" href="images/icon/favicon.png">
+    <title>Login SignUp</title>
+
+    <!-- External CSS Link -->
+    <link rel="stylesheet" type="text/css" href="loginStyle.css">
+
+    <!-- jQuery Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!-- Inline CSS for Background Image -->
+    <style>
+        body {
+            background-image: url('https://wallpapercave.com/wp/wp2939892.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <!-- JavaScript to Handle Form Submission -->
+    <script>
+        $(document).ready(function() {
+            $("form").submit(function(event) {
+                event.preventDefault(); // Prevent default form submission
+                alert("Form submission intercepted. Now using PHP."); // Alert message
+            });
+        });
+    </script>
+
+    <!-- JavaScript for Toggle Functionality -->
+    <script>
+        function login() {
+            document.getElementById("btn").style.left = "0";
+            document.getElementById("register").style.display = "none";
+            document.getElementById("login").style.display = "block";
+        }
+
+        function register() {
+            document.getElementById("btn").style.left = "110px";
+            document.getElementById("login").style.display = "none";
+            document.getElementById("register").style.display = "block";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="form-box">
+        <div class="button-box">
+            <div id="btn"></div>
+            <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+            <button type="button" class="toggle-btn" onclick="register()">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login" class="input-group" action="login.php" method="post">
+            <input type="text" class="input-field" placeholder="Username or Phone Number" name="username" required>
+            <input type="password" class="input-field" placeholder="Password" name="password" required>
+            <input type="checkbox" class="check-box" name="remember"> Remember Password
+            <button type="submit" class="submit-btn">Log In</button>
+        </form>
+
+        <!-- Alternate Authentication Options -->
+        <div class="other">
+            <div class="instead"><h3>or</h3></div>
+            <button class="connect" onclick="google()">
+                <img src="images/icon/google.png" alt="Google Icon">
+                <span>Sign in with Google</span>
+            </button>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="register" class="input-group" action="register.php" method="post">
+            <input type="text" class="input-field" placeholder="Full Name" name="fullname" required>
+            <input type="email" class="input-field" placeholder="Email Address" name="email" required>
+            <input type="password" class="input-field" placeholder="Create Password" name="create_password" required>
+            <input type="password" class="input-field" placeholder="Confirm Password" name="confirm_password" required>
+            <input type="checkbox" class="check-box" name="terms"> I agree to the Terms & Conditions
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+</body>
+</html>
